@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 
@@ -6,6 +6,7 @@ import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
 import Signup from "./Signup";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
+import PrivateRoute from "./PrivateRoute";
 
 
 import { AuthProvider } from "../contexts/AuthContext";
@@ -15,13 +16,17 @@ function App() {
     <Container className="d-flex align-items-center justify-content-center" style={{minHeight:"100vh"}}>
     <div className="w-100" style={{maxWidth:"350px"}}>
     <Router>
+    <Fragment>
        <AuthProvider>
           <Routes>
-            <Route exact path="/" element={<Dashboard/>} />
+            <Route exact path="/" element={<PrivateRoute/>}>
+              <Route exact path="/" element={<Dashboard/>} />
+            </Route>
             <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login/>} />
           </Routes>
        </AuthProvider>
+       </Fragment>
     </Router>
     </div>
     </Container>

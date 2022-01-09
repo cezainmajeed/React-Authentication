@@ -1,14 +1,21 @@
 import React, {useState} from "react";
 import { Card,Button,Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function Dashboard() {
   const [error,setError]=useState("");
-  const { currentUser } = useAuth();
+  const { currentUser,logout } = useAuth();
+  const navigate=useNavigate();
 
-  function handleLogout() {
-
+  async function handleLogout() {
+    setError("");
+    try {
+      await logout();
+      navigate("/login");
+    } catch {
+      setError("Failed to Logout!");
+    }
   }
 
   return (
