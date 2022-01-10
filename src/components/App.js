@@ -8,6 +8,7 @@ import Dashboard from "./Dashboard";
 import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
+import UpdateProfile from "./UpdateProfile";
 
 
 import { AuthProvider } from "../contexts/AuthContext";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/signup" element={<Signup/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/forgot-password" element={<ForgotPassword/>} />
+            <Route path="/update-profile" element={<UpdateProfile/>} />
           </Routes>
        </AuthProvider>
        </Fragment>
