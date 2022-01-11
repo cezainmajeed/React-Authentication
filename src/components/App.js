@@ -9,6 +9,7 @@ import Login from "./Login";
 import ForgotPassword from "./ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import UpdateProfile from "./UpdateProfile";
+import VerifyEmail from "./VerifyEmail";
 
 
 import { AuthProvider } from "../contexts/AuthContext";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/login" element={<Login/>} />
             <Route path="/forgot-password" element={<ForgotPassword/>} />
             <Route path="/update-profile" element={<UpdateProfile/>} />
+            <Route path="/verify-email" element={<VerifyEmail/>} />
           </Routes>
        </AuthProvider>
        </Fragment>
