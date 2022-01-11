@@ -7,7 +7,7 @@ export default function Signup(){
   const emailRef=useRef();
   const passwordRef=useRef();
   const confirmPasswordRef=useRef();
-  const { signup } = useAuth();
+  const { signup,signInWithGoogle } = useAuth();
   const [error,setError]=useState("");
   const [loading,setLoading]=useState(false);
   const navigate=useNavigate();
@@ -29,6 +29,17 @@ export default function Signup(){
       setError("Failed to create an account");
     }
     setLoading(false);
+  }
+
+  async function googleLogin() {
+    try{
+      setError("");
+      setLoading(true);
+      await signInWithGoogle();
+      navigate("/");
+    } catch {
+      setError("Failed to log in");
+    }
   }
 
   return (
@@ -59,6 +70,7 @@ export default function Signup(){
     </Form>
     </Card.Body>
     </Card>
+    <Button variant="danger" className="w-100 mt-4 mb-2" onClick={googleLogin}>Signup with Google</Button>
     <div className="w-100 text-center mt-2">
       Already have an account? <Link to="/login">Login</Link>
     </div>

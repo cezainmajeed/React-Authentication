@@ -6,7 +6,7 @@ import { useAuth } from "../contexts/AuthContext";
 export default function Login(){
   const emailRef=useRef();
   const passwordRef=useRef();
-  const { login } = useAuth();
+  const { login,signInWithGoogle } = useAuth();
   const [error,setError]=useState("");
   const [loading,setLoading]=useState(false);
   const navigate=useNavigate();
@@ -23,6 +23,17 @@ export default function Login(){
       setError("Failed to log in");
     }
     setLoading(false);
+  }
+
+  async function googleLogin() {
+    try{
+      setError("");
+      setLoading(true);
+      await signInWithGoogle();
+      navigate("/");
+    } catch {
+      setError("Failed to log in");
+    }
   }
 
   return (
@@ -55,6 +66,9 @@ export default function Login(){
 
     </Card.Body>
     </Card>
+
+    <Button variant="danger" className="w-100 mt-4 mb-2" onClick={googleLogin}>Signup with Google</Button>
+
     <div className="w-100 text-center mt-2">
       New to this website? <Link to="/signup">Signup</Link>
     </div>

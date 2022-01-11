@@ -24,7 +24,6 @@ function Dashboard() {
     <Card.Body>
     <h2 className="text-center mb-4">Profile</h2>
     {error && <Alert variant="danger">{error}</Alert>}
-    {console.log(currentUser)}
     <strong>Email : </strong>{currentUser.email}
     <Link to="/update-profile" className="btn btn-primary w-100 mt-3 mb-3">Update Profile</Link>
     </Card.Body>
